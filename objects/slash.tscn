@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccm2aaivg7rq1"]
+
+[ext_resource type="Texture2D" uid="uid://5mrrbx5xpany" path="res://textures/slash/Slash3_color3_frame1.png" id="1_ytpnk"]
+[ext_resource type="Texture2D" uid="uid://bapqnx2sykpa8" path="res://textures/slash/Slash3_color3_frame2.png" id="2_7v6cn"]
+[ext_resource type="Texture2D" uid="uid://cvpmxhii30mli" path="res://textures/slash/Slash3_color3_frame3.png" id="3_6rhbw"]
+[ext_resource type="Script" path="res://scripts/slash.gd" id="3_ec1de"]
+[ext_resource type="Texture2D" uid="uid://gg0x1eshdwwb" path="res://textures/slash/Slash3_color3_frame4.png" id="4_k5ak5"]
+[ext_resource type="Texture2D" uid="uid://b30c7u7fa60gg" path="res://textures/slash/Slash3_color3_frame5.png" id="5_g7ixx"]
+[ext_resource type="Texture2D" uid="uid://skfw2iqc8ys2" path="res://textures/slash/Slash3_color3_frame6.png" id="6_jniut"]
+[ext_resource type="Texture2D" uid="uid://c2qci3t2gupuc" path="res://textures/slash/Slash3_color3_frame7.png" id="7_va0lg"]
+[ext_resource type="Texture2D" uid="uid://b3toxvpt01i5p" path="res://textures/slash/Slash3_color3_frame8.png" id="8_nevrh"]
+[ext_resource type="Texture2D" uid="uid://bd0lbrx7pli0t" path="res://textures/slash/Slash3_color3_frame9.png" id="9_ecy3b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08fxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ytpnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7v6cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6rhbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k5ak5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g7ixx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jniut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_va0lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nevrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ecy3b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="Slash" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_08fxx")
+frame = 8
+frame_progress = 1.0
+script = ExtResource("3_ec1de")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
