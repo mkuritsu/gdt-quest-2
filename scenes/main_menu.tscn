@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bicrymvyowi8o"]
+[gd_scene load_steps=3 format=3 uid="uid://bicrymvyowi8o"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_0wjtu"]
+[ext_resource type="Texture2D" uid="uid://c5hegt8kwjynb" path="res://textures/Brown.png" id="2_gpefe"]
 
 [node name="main-menu" type="Control"]
 layout_mode = 3
@@ -11,7 +12,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wjtu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gpefe")
+stretch_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,27 +30,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "GDT Quest 2"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
 
-[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
