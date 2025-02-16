@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://vb1qycum53v"]
+[gd_scene load_steps=5 format=4 uid="uid://vb1qycum53v"]
 
 [ext_resource type="TileSet" uid="uid://4mbmyb8y4plb" path="res://tilemaps/main.tres" id="1_ljcn8"]
 [ext_resource type="PackedScene" uid="uid://b1gokgcs5udf5" path="res://objects/player.tscn" id="2_c2d8w"]
+[ext_resource type="PackedScene" uid="uid://cr6w8xur2c6al" path="res://objects/portal.tscn" id="3_8ocn2"]
+[ext_resource type="PackedScene" uid="uid://dnhjsi7dnrrrp" path="res://scenes/level02.tscn" id="4_0222e"]
 
 [node name="Level01" type="Node2D"]
 
@@ -28,3 +30,7 @@ offset_top = 376.0
 offset_right = 561.0
 offset_bottom = 399.0
 text = "It ain't that deep just move like any other game"
+
+[node name="Portal" parent="." instance=ExtResource("3_8ocn2")]
+position = Vector2(1443, 526)
+NEXT_SCENE = ExtResource("4_0222e")

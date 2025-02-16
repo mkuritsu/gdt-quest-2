@@ -27,11 +27,8 @@ func slash() -> void:
 	slash_anim.play()
 	current_slash = slash_anim
 	add_child(slash_anim)
-	if result:
-		print(position.distance_to(result.position))
-		if velocity.y > 0:
-			velocity.y = 0
-		velocity.y += KNOCKBACK_VELOCITY
+	if result and velocity.y >= 0:
+		velocity.y = KNOCKBACK_VELOCITY
 		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
