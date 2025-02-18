@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mp4wulasccgx"]
 
 [ext_resource type="Script" path="res://scripts/label.gd" id="1_vh5os"]
-[ext_resource type="PackedScene" uid="uid://5vehfvfr7ieg" path="res://scenes/boss.tscn" id="2_vno1t"]
+[ext_resource type="PackedScene" uid="uid://4r00gx6k51x2" path="res://scenes/final.tscn" id="2_3ie7o"]
 
 [node name="PreBoss" type="Control"]
 layout_mode = 3
@@ -35,8 +35,8 @@ layout_mode = 2
 layout_mode = 2
 horizontal_alignment = 1
 script = ExtResource("1_vh5os")
-TEXTS = Array[String](["Congratulations on completing your first baby steps :D", "Now to your next challenge", "KILL THE BIG BOSS"])
-NEXT_SCENE = ExtResource("2_vno1t")
+TEXTS = ["Congratulations on completing your first baby steps :D", "Now to your next challenge", "KILL THE BIG BOSS"]
+NEXT_SCENE = ExtResource("2_3ie7o")
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2

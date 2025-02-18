@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dcj122ab6ft68" path="res://animations/player.tres" id="2_tss3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dc2"]
-size = Vector2(103.619, 88.0435)
+size = Vector2(103.619, 70.5652)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja8g1"]
 size = Vector2(34, 86)
