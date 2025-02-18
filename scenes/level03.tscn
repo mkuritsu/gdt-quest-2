@@ -77,4 +77,4 @@ position = Vector2(542, 459)
 position = Vector2(309, 406)
 
 [node name="Saw" parent="." instance=ExtResource("7_p10m6")]
-position = Vector2(456, 556)
+position = Vector2(457, 570)

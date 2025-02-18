@@ -1,7 +1,6 @@
 extends AnimatedSprite2D
 
 
-func _process(_delta: float) -> void:
-	for body in $Area2D.get_overlapping_bodies():
-		if body is Player:
-			body.kill()
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.kill()
