@@ -3,12 +3,16 @@ class_name Player
 
 const SLASH = preload("res://objects/slash.tscn")
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
+@export var SPEED = 250.0
+@export var JUMP_VELOCITY = -320.0
 @export var ATTACK_DISTANCE = 110.0
 @export var KNOCKBACK_VELOCITY = -250.0
+@export var AIR_FRICTION = 1.0
 
 var current_slash = null
+
+func kill() -> void:
+	get_tree().reload_current_scene()
 
 func slash() -> void:
 	if is_instance_valid(current_slash):
@@ -42,15 +46,16 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 		
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		velocity.x *= AIR_FRICTION
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 	if Input.is_action_just_pressed("attack"):
 		self.slash()
 		$AnimatedSprite2D.play("attack")
