@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://5vehfvfr7ieg"]
+[gd_scene load_steps=2 format=3 uid="uid://5vehfvfr7ieg"]
+
+[ext_resource type="AudioStream" uid="uid://cyaee3bv5ijul" path="res://audio/battle.mp3" id="1_66dbx"]
 
 [node name="Boss" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_66dbx")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
