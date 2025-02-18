@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://mp4wulasccgx"]
+[gd_scene load_steps=2 format=3 uid="uid://mp4wulasccgx"]
+
+[ext_resource type="Script" path="res://scripts/label.gd" id="1_vh5os"]
 
 [node name="PreBoss" type="Control"]
 layout_mode = 3
@@ -30,13 +32,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Congratulations on completing your first baby steps :D"
 horizontal_alignment = 1
+script = ExtResource("1_vh5os")
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Press 'ATTACK' to continue "
+text = "Press 'ENTER' to continue "
 horizontal_alignment = 1

@@ -32,5 +32,6 @@ offset_bottom = 399.0
 text = "It ain't that deep just move like any other game"
 
 [node name="Portal" parent="." instance=ExtResource("3_8ocn2")]
-position = Vector2(1443, 526)
+position = Vector2(1466, 550)
+scale = Vector2(2.84, 2.84)
 NEXT_SCENE = ExtResource("4_0222e")
