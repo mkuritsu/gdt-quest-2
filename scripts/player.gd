@@ -3,6 +3,7 @@ class_name Player
 
 const SLASH = preload("res://objects/slash.tscn")
 const DEATH_SOUND = preload("res://audio/oof.mp3")
+const ATTACK_SOUND = preload("res://audio/sword_attack.wav")
 
 @export var SPEED = 250.0
 @export var JUMP_VELOCITY = -320.0
@@ -30,7 +31,12 @@ func slash() -> void:
 	var areas = $Area2D.get_overlapping_areas()
 	var bodies = $Area2D.get_overlapping_bodies()
 	if len(areas) > 0 || len(bodies) > 1:
-		velocity.y = KNOCKBACK_VELOCITY		
+		velocity.y = KNOCKBACK_VELOCITY
+		$AudioStreamPlayer2D.stream = ATTACK_SOUND
+		$AudioStreamPlayer2D.play()
+		for area in areas:
+			if area.get_parent() is Boss:
+				area.get_parent().damage()
 
 func _process(_delta: float) -> void:
 	if is_dying:
