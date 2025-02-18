@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mp4wulasccgx"]
 
+[ext_resource type="Script" path="res://scripts/level_pre_boss.gd" id="1_084r0"]
 [ext_resource type="Script" path="res://scripts/label.gd" id="1_vh5os"]
-[ext_resource type="PackedScene" uid="uid://4r00gx6k51x2" path="res://scenes/final.tscn" id="2_3ie7o"]
 
 [node name="PreBoss" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_084r0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,7 +37,6 @@ layout_mode = 2
 horizontal_alignment = 1
 script = ExtResource("1_vh5os")
 TEXTS = ["Congratulations on completing your first baby steps :D", "Now to your next challenge", "KILL THE BIG BOSS"]
-NEXT_SCENE = ExtResource("2_3ie7o")
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,3 +45,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Press 'ENTER' to continue "
 horizontal_alignment = 1
+
+[connection signal="dialog_finished" from="ColorRect/CenterContainer/VBoxContainer/Label" to="." method="_on_label_dialog_finished"]

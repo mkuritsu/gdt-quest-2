@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://4r00gx6k51x2"]
 
 [ext_resource type="Script" path="res://scripts/label.gd" id="1_oh2pr"]
-[ext_resource type="PackedScene" uid="uid://bicrymvyowi8o" path="res://scenes/main_menu.tscn" id="2_vrqt4"]
+[ext_resource type="Script" path="res://scripts/level_final.gd" id="1_vj8aj"]
 
-[node name="PreBoss" type="Control"]
+[node name="Final" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vj8aj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,7 +37,6 @@ layout_mode = 2
 horizontal_alignment = 1
 script = ExtResource("1_oh2pr")
 TEXTS = ["YEY you killed the boss", "You are a epic gamer", "Now pay 99.99$ for the rest of the game."]
-NEXT_SCENE = ExtResource("2_vrqt4")
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,3 +45,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Press 'ENTER' to continue "
 horizontal_alignment = 1
+
+[connection signal="dialog_finished" from="ColorRect/CenterContainer/VBoxContainer/Label" to="." method="_on_label_dialog_finished"]

@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=4 uid="uid://vb1qycum53v"]
 
+[ext_resource type="Script" path="res://scripts/level_01.gd" id="1_h4wrh"]
 [ext_resource type="TileSet" uid="uid://4mbmyb8y4plb" path="res://tilemaps/main.tres" id="1_ljcn8"]
 [ext_resource type="PackedScene" uid="uid://b1gokgcs5udf5" path="res://objects/player.tscn" id="2_c2d8w"]
 [ext_resource type="PackedScene" uid="uid://cr6w8xur2c6al" path="res://objects/portal.tscn" id="3_8ocn2"]
-[ext_resource type="PackedScene" uid="uid://cqj4yaxmp7t16" path="res://scenes/level02.tscn" id="4_0222e"]
 [ext_resource type="Texture2D" uid="uid://bnpsl28wvnj2u" path="res://textures/Gray.png" id="5_gnklv"]
 
 [node name="Level01" type="Node"]
+script = ExtResource("1_h4wrh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, 720)
@@ -37,7 +38,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Portal" parent="." instance=ExtResource("3_8ocn2")]
 position = Vector2(981, 450)
 scale = Vector2(2.84, 2.84)
-NEXT_SCENE = ExtResource("4_0222e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(581, 392)
@@ -53,3 +53,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_gnklv")
 stretch_mode = 1
+
+[connection signal="portal_entered" from="Portal" to="." method="_on_portal_portal_entered"]

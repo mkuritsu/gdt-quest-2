@@ -1,4 +1,7 @@
 extends Label
+class_name TextDialog
+
+signal dialog_finished
 
 @export var LETTER_TIME = 0.05
 @export var TEXTS: Array
@@ -15,7 +18,7 @@ func _process(delta: float) -> void:
 		else:
 			text = TEXTS[index]
 	if index == TEXTS.size():
-		get_tree().change_scene_to_packed(NEXT_SCENE)
+		dialog_finished.emit()
 		return
 	if text != TEXTS[index]:
 		acc_time += delta
