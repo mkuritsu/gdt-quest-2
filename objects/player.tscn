@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1gokgcs5udf5"]
+[gd_scene load_steps=5 format=3 uid="uid://b1gokgcs5udf5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ewdkk"]
 [ext_resource type="SpriteFrames" uid="uid://dcj122ab6ft68" path="res://animations/player.tres" id="2_tss3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dc2"]
 size = Vector2(103.619, 88.0435)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja8g1"]
+size = Vector2(34, 67)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ewdkk")
@@ -18,4 +21,9 @@ shape = SubResource("RectangleShape2D_e5dc2")
 sprite_frames = ExtResource("2_tss3j")
 animation = &"attack"
 
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 33.5)
+shape = SubResource("RectangleShape2D_ja8g1")
+debug_color = Color(0.947792, 0.214674, 0.212736, 0.42)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://q5mbryse1o6f"]
+
+[ext_resource type="Texture2D" uid="uid://dfp824rsv1jx0" path="res://textures/Dust Particle.png" id="1_mm083"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gfnq"]
+radius = 5.33333
+
+[node name="Ball" type="Sprite2D"]
+modulate = Color(0.227451, 1, 0.47451, 1)
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_mm083")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4gfnq")
+debug_color = Color(9.62615e-08, 0.578562, 0.809282, 0.42)

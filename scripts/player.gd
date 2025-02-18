@@ -17,23 +17,15 @@ func kill() -> void:
 func slash() -> void:
 	if is_instance_valid(current_slash):
 		return
-	var attack_direction = Vector2(0, 1)
-	var space_state = get_world_2d().direct_space_state
-	var from = global_position
-	var to = global_position + attack_direction * ATTACK_DISTANCE
-	var query = PhysicsRayQueryParameters2D.create(from, to)
-	query.collide_with_areas = true
-	query.collide_with_bodies = true
-	query.exclude = [self]
-	var result = space_state.intersect_ray(query)
 	var slash_anim = SLASH.instantiate()
 	slash_anim.rotation = PI
 	slash_anim.play()
 	current_slash = slash_anim
 	add_child(slash_anim)
-	if result and velocity.y >= 0:
-		velocity.y = KNOCKBACK_VELOCITY
-		
+	var areas = $Area2D.get_overlapping_areas()
+	var bodies = $Area2D.get_overlapping_bodies()
+	if len(areas) > 0 || len(bodies) > 1:
+		velocity.y = KNOCKBACK_VELOCITY		
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(current_slash):
