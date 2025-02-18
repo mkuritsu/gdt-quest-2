@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-
 const SLASH = preload("res://objects/slash.tscn")
 
 @export var SPEED = 300.0
@@ -31,6 +30,17 @@ func slash() -> void:
 	if result and velocity.y >= 0:
 		velocity.y = KNOCKBACK_VELOCITY
 		
+
+func _process(_delta: float) -> void:
+	if is_instance_valid(current_slash):
+		$AnimatedSprite2D.play("attack")
+		return
+	if velocity.x == 0:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+		
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -43,4 +53,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if Input.is_action_just_pressed("attack"):
 		self.slash()
+		$AnimatedSprite2D.play("attack")
 	move_and_slide()

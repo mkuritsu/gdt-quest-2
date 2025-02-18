@@ -1,46 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1gokgcs5udf5"]
+[gd_scene load_steps=4 format=3 uid="uid://b1gokgcs5udf5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ewdkk"]
-[ext_resource type="Texture2D" uid="uid://brxrs8hovvsd5" path="res://icon.svg" id="1_jhfu6"]
+[ext_resource type="SpriteFrames" uid="uid://dcj122ab6ft68" path="res://animations/player.tres" id="2_tss3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dc2"]
-size = Vector2(128, 127)
-
-[sub_resource type="Animation" id="Animation_c5klv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_f2gme"]
-resource_name = "player_idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5o4wf"]
-_data = {
-"RESET": SubResource("Animation_c5klv"),
-"player_idle": SubResource("Animation_f2gme")
-}
+size = Vector2(103.619, 88.0435)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ewdkk")
@@ -50,11 +14,8 @@ position = Vector2(0, 0.359375)
 scale = Vector2(0.328125, 0.71875)
 shape = SubResource("RectangleShape2D_e5dc2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.328125, 0.71875)
-texture = ExtResource("1_jhfu6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_tss3j")
+animation = &"attack"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5o4wf")
-}
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
