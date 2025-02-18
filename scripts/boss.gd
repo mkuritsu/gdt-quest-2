@@ -7,7 +7,7 @@ const DEATH_SOUND = preload("res://audio/boss_death.mp3")
 const ATTACK_COOLDOWN = 5
 
 var rng = RandomNumberGenerator.new()
-var health = 50
+var health = 100
 var acc_time = 0
 
 func damage() -> void:

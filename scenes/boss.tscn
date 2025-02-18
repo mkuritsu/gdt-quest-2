@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://5vehfvfr7ieg"]
+[gd_scene load_steps=9 format=4 uid="uid://5vehfvfr7ieg"]
 
 [ext_resource type="AudioStream" uid="uid://cyaee3bv5ijul" path="res://audio/battle.mp3" id="1_66dbx"]
+[ext_resource type="Script" path="res://scripts/level_boss.gd" id="1_h2ryb"]
 [ext_resource type="TileSet" uid="uid://4mbmyb8y4plb" path="res://tilemaps/main.tres" id="2_jkaqg"]
 [ext_resource type="PackedScene" uid="uid://bkmq0dpy8tjwe" path="res://objects/boss.tscn" id="3_2e4yf"]
 [ext_resource type="PackedScene" uid="uid://b1gokgcs5udf5" path="res://objects/player.tscn" id="4_ty0wc"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ury4hug2sh63" path="res://objects/spikes.tscn" id="7_g1r6n"]
 
 [node name="Boss" type="Node"]
+script = ExtResource("1_h2ryb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_66dbx")
@@ -138,3 +140,18 @@ position = Vector2(213, 561)
 
 [node name="Ball4" parent="." instance=ExtResource("5_3f1ha")]
 position = Vector2(1120, 565)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 250.0
+offset_top = 31.0
+offset_right = -190.0
+offset_bottom = 58.0
+grow_horizontal = 2
+max_value = 50.0
+step = 1.0
+value = 50.0
+rounded = true
+show_percentage = false
