@@ -27,3 +27,7 @@ animation = &"attack"
 position = Vector2(0, 43)
 shape = SubResource("RectangleShape2D_ja8g1")
 debug_color = Color(0.947792, 0.214674, 0.212736, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

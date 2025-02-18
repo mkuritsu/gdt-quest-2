@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const SLASH = preload("res://objects/slash.tscn")
+const DEATH_SOUND = preload("res://audio/oof.mp3")
 
 @export var SPEED = 250.0
 @export var JUMP_VELOCITY = -320.0
@@ -10,9 +11,13 @@ const SLASH = preload("res://objects/slash.tscn")
 @export var AIR_FRICTION = 1.0
 
 var current_slash = null
+var is_dying = false
 
 func kill() -> void:
-	get_tree().reload_current_scene()
+	if !is_dying:
+		is_dying = true
+		$AudioStreamPlayer2D.stream = DEATH_SOUND
+		$AudioStreamPlayer2D.play()
 
 func slash() -> void:
 	if is_instance_valid(current_slash):
@@ -28,14 +33,17 @@ func slash() -> void:
 		velocity.y = KNOCKBACK_VELOCITY		
 
 func _process(_delta: float) -> void:
+	if is_dying:
+		$AnimatedSprite2D.play("death")
+		return
 	if is_instance_valid(current_slash):
 		$AnimatedSprite2D.play("attack")
 		return
 	if velocity.x == 0:
 		$AnimatedSprite2D.play("idle")
-	else:
-		$AnimatedSprite2D.play("walk")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		return
+	$AnimatedSprite2D.play("walk")
+	$AnimatedSprite2D.flip_h = velocity.x < 0
 		
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
@@ -46,9 +54,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		velocity.x *= AIR_FRICTION
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("attack"):
-		self.slash()
-		$AnimatedSprite2D.play("attack")
+	if is_dying:
+		velocity.x = 0
+	else:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("attack"):
+			self.slash()
+			$AnimatedSprite2D.play("attack")
 	move_and_slide()
+
+
+func _on_animated_sprite_2d_animation_looped() -> void:
+	if is_dying:
+		get_tree().reload_current_scene()

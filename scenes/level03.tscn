@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bt1qrpqq1l6bv"]
+[gd_scene load_steps=8 format=4 uid="uid://bt1qrpqq1l6bv"]
 
 [ext_resource type="TileSet" uid="uid://4mbmyb8y4plb" path="res://tilemaps/main.tres" id="1_emodj"]
 [ext_resource type="PackedScene" uid="uid://b1gokgcs5udf5" path="res://objects/player.tscn" id="2_oojmr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bnpsl28wvnj2u" path="res://textures/Gray.png" id="4_auths"]
 [ext_resource type="PackedScene" uid="uid://mp4wulasccgx" path="res://scenes/pre_boss.tscn" id="4_qoud0"]
 [ext_resource type="PackedScene" uid="uid://q5mbryse1o6f" path="res://objects/ball.tscn" id="5_sqj12"]
+[ext_resource type="PackedScene" uid="uid://biyyysy7w2i4m" path="res://objects/saw.tscn" id="7_p10m6"]
 
 [node name="Level03" type="Node"]
 
@@ -74,3 +75,6 @@ position = Vector2(542, 459)
 
 [node name="Ball6" parent="." instance=ExtResource("5_sqj12")]
 position = Vector2(309, 406)
+
+[node name="Saw" parent="." instance=ExtResource("7_p10m6")]
+position = Vector2(456, 556)
