@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mp4wulasccgx"]
+[gd_scene load_steps=3 format=3 uid="uid://4r00gx6k51x2"]
 
-[ext_resource type="Script" path="res://scripts/label.gd" id="1_vh5os"]
-[ext_resource type="PackedScene" uid="uid://5vehfvfr7ieg" path="res://scenes/boss.tscn" id="2_vno1t"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="1_oh2pr"]
+[ext_resource type="PackedScene" uid="uid://bicrymvyowi8o" path="res://scenes/main_menu.tscn" id="2_vrqt4"]
 
 [node name="PreBoss" type="Control"]
 layout_mode = 3
@@ -34,9 +34,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
-script = ExtResource("1_vh5os")
-TEXTS = Array[String](["Congratulations on completing your first baby steps :D", "Now to your next challenge", "KILL THE BIG BOSS"])
-NEXT_SCENE = ExtResource("2_vno1t")
+script = ExtResource("1_oh2pr")
+TEXTS = ["YEY you killed the boss", "You are a epic gamer", "Now pay 99.99$ for the rest of the game."]
+NEXT_SCENE = ExtResource("2_vrqt4")
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2

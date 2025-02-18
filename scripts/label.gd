@@ -1,13 +1,8 @@
 extends Label
 
 @export var LETTER_TIME = 0.05
-
-const TEXTS = [
-	"Congratulations on completing your first baby steps :D", 
-	"Now to your next challenge",
-	"KILL THE BIG BOSS"
-]
-const BOSS_SCENE = preload("res://scenes/boss.tscn")
+@export var TEXTS: Array
+@export var NEXT_SCENE: PackedScene
 
 var index = 0
 var acc_time = 0.0
@@ -20,7 +15,7 @@ func _process(delta: float) -> void:
 		else:
 			text = TEXTS[index]
 	if index == TEXTS.size():
-		get_tree().change_scene_to_packed(BOSS_SCENE)
+		get_tree().change_scene_to_packed(NEXT_SCENE)
 		return
 	if text != TEXTS[index]:
 		acc_time += delta
