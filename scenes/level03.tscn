@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bt1qrpqq1l6bv"]
+[gd_scene load_steps=9 format=4 uid="uid://bt1qrpqq1l6bv"]
 
 [ext_resource type="Script" path="res://scripts/level_03.gd" id="1_a713a"]
 [ext_resource type="TileSet" uid="uid://4mbmyb8y4plb" path="res://tilemaps/main.tres" id="1_emodj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnpsl28wvnj2u" path="res://textures/Gray.png" id="4_auths"]
 [ext_resource type="PackedScene" uid="uid://ury4hug2sh63" path="res://objects/spikes.tscn" id="6_at2pe"]
 [ext_resource type="PackedScene" uid="uid://biyyysy7w2i4m" path="res://objects/saw.tscn" id="7_p10m6"]
+[ext_resource type="AudioStream" uid="uid://d02j46twaymnr" path="res://audio/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.wav" id="8_cnmtg"]
 
 [node name="Level03" type="Node"]
 script = ExtResource("1_a713a")
@@ -186,5 +187,10 @@ position = Vector2(917, 658)
 
 [node name="Saw22" parent="." instance=ExtResource("7_p10m6")]
 position = Vector2(930, 519)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cnmtg")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="portal_entered" from="Portal" to="." method="_on_portal_portal_entered"]
