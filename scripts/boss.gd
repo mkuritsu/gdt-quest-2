@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 class_name Boss
 
-const SAW = preload("res://objects/saw.tscn")
+const MOVING_SAW = preload("res://objects/moving_saw.tscn")
 const DAMAGE_SOUND = preload("res://audio/boss_damage.wav")
 const DEATH_SOUND = preload("res://audio/boss_death.mp3")
 const ATTACK_COOLDOWN = 5
@@ -35,12 +35,23 @@ func attack() -> void:
 	var attack_type = rng.randi_range(0, 0)
 	print('ATTACK', attack_type)
 	if attack_type == 0:
-		var saw_instance = SAW.instantiate()
-		print('Saw create')
-		await get_tree().create_timer(1).timeout
-		print('Saw destroy')
-		saw_instance.queue_free()
-	pass
+		attack0_moving_saws()
+			
+func attack0_moving_saws():
+	var saws: Array[MovingSaw] = []
+	for i in range(5):
+		var saw = MOVING_SAW.instantiate()
+		add_child(saw)
+		saw.global_position.x = rng.randi_range(10, 1200)
+		saw.global_position.y = rng.randi_range(10, 700)
+		saws.push_back(saw)
+	print('Crated saws')
+	await get_tree().create_timer(1).timeout
+	for saw in saws:
+		saw.start_moving($"../Player".global_position)
+	await get_tree().create_timer(2).timeout
+	for saw in saws:
+		saw.queue_free()
 
 func _process(delta: float) -> void:
 	if health > 0:
