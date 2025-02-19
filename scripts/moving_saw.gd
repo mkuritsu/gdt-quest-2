@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name MovingSaw
 
 var moving = false
-const SPEED = 500
+const SPEED = 400
 	
 func start_moving(to: Vector2) -> void:
 	moving = true
